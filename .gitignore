@@ -1,3 +1,5 @@
 react-nginx\node_modules
 react-nginx\build
 react-nginx\.git
+test_product\backend\node_modules
+test_product\frontend\node_modules
