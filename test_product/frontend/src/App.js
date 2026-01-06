@@ -9,7 +9,7 @@ function App() {
   },[]);
   const fetchNotes = async () => {
     try{
-      const response = await fetch('http://localhost:5000/notes');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
       const data = await response.json();
       setNotes(data);
     }catch(err){
@@ -19,7 +19,7 @@ function App() {
   const addNote = async () => {
     if(!input) return ;
     try{
-      await fetch('http://localhost:5000/notes',{
+      await fetch(`${process.env.REACT_APP_API_URL}/notes`,{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'
