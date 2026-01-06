@@ -82,3 +82,11 @@ This will open the application in your default web browser.
 This repository also contains other examples in the following directories:
 -   `react-nginx`: A simple example of a React application served with Nginx.
 -   `vim-nginx`: An example of a VIM editor running in a container, served with Nginx.
+
+### Load Image 
+```sh
+minikube image load my-frontend:v1
+minikube image load my-backend:v1
+minikube image load mongo:latest
+
+```
