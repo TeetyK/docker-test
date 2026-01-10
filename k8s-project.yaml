@@ -60,8 +60,8 @@ spec:
   selector:
     app: api
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 5000
+      targetPort: 5000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -82,7 +82,7 @@ spec:
           image: my-backend:v1
           imagePullPolicy: Never
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
           env:
             - name: MONGO_URL
               value: mongodb://mongo-db:27017
@@ -116,8 +116,11 @@ spec:
     spec:
       containers:
         - name: web
-          image: my-frontend:v1
+          image: my-frontend:v5
           imagePullPolicy: Never
           ports:
             - containerPort: 80
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://api:5000"
 ---

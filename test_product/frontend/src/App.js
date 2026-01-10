@@ -4,12 +4,13 @@ import React , { useState , useEffect } from 'react';
 function App() {
   const [notes , setNotes ] = useState([]);
   const [input , setInput ] = useState('');
+  const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"; 
   useEffect(()=>{
     fetchNotes();
   },[]);
   const fetchNotes = async () => {
     try{
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
+      const response = await fetch(`${BASE_URL}/notes`);
       const data = await response.json();
       setNotes(data);
     }catch(err){
@@ -19,7 +20,7 @@ function App() {
   const addNote = async () => {
     if(!input) return ;
     try{
-      await fetch(`${process.env.REACT_APP_API_URL}/notes`,{
+      await fetch(`${BASE_URL}/notes`,{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'

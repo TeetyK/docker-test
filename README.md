@@ -62,6 +62,7 @@ You need to rebuild the frontend image to include the API URL.
 ```sh
 cd test_product/frontend
 docker build -t my-frontend:v1 .
+docker build --build-arg REACT_APP_API_URL=http://api:5000 -t my-frontend:v3 .
 ```
 
 **Re-apply the Kubernetes manifests:**
@@ -88,5 +89,6 @@ This repository also contains other examples in the following directories:
 minikube image load my-frontend:v1
 minikube image load my-backend:v1
 minikube image load mongo:latest
-
+# Open tunneling port 5000 for localhost:5000
+kubectl port-forward svc/api 5000:5000
 ```
